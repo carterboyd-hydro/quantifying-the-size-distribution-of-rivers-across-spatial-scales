@@ -57,6 +57,12 @@ pareto_pdf_log <- function(x, lambda = 1, k = 1, bw, n){
   return(density)
 }
 
+#Create a Pareto probability density function for plotting in log-space, scaled to river length instead of count
+pareto_pdf_log_scaled <- function(x, lambda = 1, k = 1, bw, n, scale_factor){
+  density <- (k*(lambda^k)) / ((x)^(k + 1)) * bw * n * scale_factor
+  return(density)
+}
+
 #Function to test fit of lognormal and Pareto distributions
 test_fits = function(data, pareto = F){
   require(stats)
